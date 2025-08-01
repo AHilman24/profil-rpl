@@ -8,6 +8,14 @@ class UserController extends Controller
 {
     public function index()
     {
-        return view('dashboard');
+        $data = [
+            'projects' => \App\Models\Project::all(),
+            'achievements' => \App\Models\Achievement::all(),
+            'gallery' => \App\Models\Galleri::all(),
+            'total_projects' => \App\Models\Project::count(),
+            'total_achievements' => \App\Models\Achievement::count(),
+            'total_gallery' => \App\Models\Galleri::count(),
+        ];
+        return view('dashboard', $data);
     }
 }

@@ -12,7 +12,12 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
-        //
+        $middleware->alias([
+            'login' => App\Http\Middleware\AuthMiddleware::class,
+        ]);
+        // $middleware->register('guest', App\Http\Middleware\GuestMiddleware::class);
+        // $middleware->register('verified', App\Http\Middleware\EnsureEmailIsVerified::class);
+        // $middleware->register('throttle', App\Http\Middleware\ThrottleRequests::class);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //

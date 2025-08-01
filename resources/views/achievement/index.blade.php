@@ -26,7 +26,7 @@
                             <div class="d-flex align-items-center">
                                 <h4 class="card-title">Management Achievement</h4>
                                 <button class="btn btn-primary btn-round ms-auto" data-bs-toggle="modal"
-                                    data-bs-target="#addModal">
+                                    data-bs-target="#addRowModal">
                                     <i class="fa fa-plus"></i>
                                     Add Data
                                 </button>
@@ -34,10 +34,10 @@
                         </div>
                         <div class="card-body">
                             <!-- Modal -->
-                            <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-hidden="true">
-                                <div class="modal-dialog">
+                            <div class="modal fade" id="addRowModal" tabindex="-1" role="dialog" aria-hidden="true">
+                                <div class="modal-dialog modal-lg">
                                     <div class="modal-content">
-                                        <div class="modal-header border-0">
+                                        <div class="modal-header border">
                                             <h5 class="modal-title">
                                                 <span class="fw-bold">Add New Achievement</span>
                                             </h5>
@@ -98,8 +98,8 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="modal-footer border-0">
-                                                <button type="submit" id="addRowButton" class="btn btn-primary">
+                                            <div class="modal-footer border w-100">
+                                                <button type="submit" id="addRowButton" class="btn btn-primary w-100">
                                                     Add
                                                 </button>
                                             </div>
@@ -140,20 +140,28 @@
                                                 @else
                                                     <img src="{{ asset('IMG-20231004-WA0088.jpg') }}" alt=""
                                                         style="width: 50px;height: 50px;object-fit: cover">
-                                                @endif --}} -
+                                                @endif --}}
+                                                    <img src="{{ asset('images/achievements/' . $item->certificate_image) }}"
+                                                        alt="Certificate Image" style="width: 50px; height: 50px; object-fit: cover;">
                                                 </td>
                                                 <td>
-                                                    <div class="form-button-action">
+                                                    <div class="d-flex">
                                                         <button type="button" data-bs-toggle="modal"
                                                             data-bs-target="#editModal{{ $item->id }}" title=""
                                                             class="btn btn-link btn-primary btn-lg"
                                                             data-original-title="Edit Task" style="cursor: pointer;">
                                                             <i class="fa fa-edit"></i>
                                                         </button>
-                                                        <button type="button" data-bs-toggle="tooltip" title=""
-                                                            class="btn btn-link btn-danger" data-original-title="Remove">
-                                                            <i class="fa fa-times"></i>
-                                                        </button>
+                                                        <form id="deleteForm-{{ $item->id }}"
+                                                            action="/achievement/delete/{{ $item->id }}"
+                                                            method="POST">
+                                                            @csrf
+                                                            <button type="button" class="btn btn-link btn-danger pt-3"
+                                                                onclick="confirmDelete({{ $item->id }})"
+                                                                title="Remove">
+                                                                <i class="fa fa-times"></i>
+                                                            </button>
+                                                        </form>
                                                     </div>
                                                 </td>
                                             </tr>
@@ -164,9 +172,9 @@
                                 @foreach ($achievements as $item)
                                     <div class="modal fade" id="editModal{{ $item->id }}" tabindex="-1"
                                         aria-hidden="true">
-                                        <div class="modal-dialog">
+                                        <div class="modal-dialog modal-lg">
                                             <div class="modal-content">
-                                                <div class="modal-header border-0">
+                                                <div class="modal-header border">
                                                     <h5 class="modal-title fw-bold">Edit Achievement</h5>
                                                     <button type="button" class="close" data-bs-dismiss="modal"
                                                         aria-label="Close">
@@ -177,7 +185,7 @@
                                                 <form action="/achievement/edit/{{ $item->id }}" method="POST"
                                                     enctype="multipart/form-data">
                                                     @csrf
-                                                    @method('PUT')
+                                                    {{-- @method('PUT') --}}
 
                                                     <div class="modal-body">
                                                         <div class="row">
@@ -222,15 +230,20 @@
                                                                 </select>
                                                             </div>
                                                             <div class="col-12 mb-2">
-                                                                <h6>Certificate (optional)</h6>
+                                                                <h6>Certificate</h6>
+                                                                @if ($item->certificate_image)
+                                                                        <img src="{{ asset('images/achievements/' . $item->certificate_image) }}"
+                                                                            alt="Current Image"
+                                                                            style="width: 100px; height: 100px; object-fit: cover; margin-bottom: 10px;">
+                                                                    @endif
                                                                 <input name="certificate_image" type="file"
                                                                     class="form-control">
                                                             </div>
                                                         </div>
                                                     </div>
 
-                                                    <div class="modal-footer border-0">
-                                                        <button type="submit" class="btn btn-primary">Update</button>
+                                                    <div class="modal-footer border w-100">
+                                                        <button type="submit" class="btn btn-primary w-100">Update</button>
                                                     </div>
                                                 </form>
 

@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\User;
 use App\Models\Galleri;
 use App\Models\Achievement;
+use App\Models\Project;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -77,6 +78,39 @@ class DatabaseSeeder extends Seeder
             'level' => 'Provinsi',
             'year' => 2024,
             'certificate_image' => 'cert_januardy.jpg',
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+        Project::create([
+            'title' => 'Aplikasi Manajemen Inventaris',
+            'description' => 'Aplikasi web untuk mengelola inventaris barang di kantor dengan fitur laporan dan notifikasi stok.',
+            'tech_stack' => json_encode(['Laravel', 'Vue.js', 'MySQL']),
+            'link_preview' => 'https://inventaris-demo.netlify.app',
+            'github_link' => 'https://github.com/username/inventaris-app',
+            'thumbnail' => 'inventaris.png',
+            'status' => 'published',
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+        Project::create([
+            'title' => 'Website Portofolio Pribadi',
+            'description' => 'Website portofolio untuk menampilkan hasil karya dan pengalaman kerja.',
+            'tech_stack' => json_encode(['Laravel', 'Bootstrap']),
+            'link_preview' => 'https://portofolio.vercel.app',
+            'github_link' => 'https://github.com/username/portofolio',
+            'thumbnail' => 'portofolio.png',
+            'status' => 'published',
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+        Project::create([
+            'title' => 'Sistem Informasi Perpustakaan',
+            'description' => 'Sistem untuk mengelola data buku, peminjaman, dan pengembalian di perpustakaan sekolah.',
+            'tech_stack' => json_encode(['Laravel', 'React', 'PostgreSQL']),
+            'link_preview' => null,
+            'github_link' => 'https://github.com/username/perpustakaan',
+            'thumbnail' => null,
+            'status' => 'draft',
             'created_at' => now(),
             'updated_at' => now(),
         ]);
