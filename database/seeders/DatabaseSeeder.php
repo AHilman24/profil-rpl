@@ -83,6 +83,7 @@ class DatabaseSeeder extends Seeder
         ]);
         Project::create([
             'title' => 'Aplikasi Manajemen Inventaris',
+            'type'=>'website',
             'description' => 'Aplikasi web untuk mengelola inventaris barang di kantor dengan fitur laporan dan notifikasi stok.',
             'tech_stack' => json_encode(['Laravel', 'Vue.js', 'MySQL']),
             'link_preview' => 'https://inventaris-demo.netlify.app',
@@ -94,6 +95,7 @@ class DatabaseSeeder extends Seeder
         ]);
         Project::create([
             'title' => 'Website Portofolio Pribadi',
+            'type'=>'website',
             'description' => 'Website portofolio untuk menampilkan hasil karya dan pengalaman kerja.',
             'tech_stack' => json_encode(['Laravel', 'Bootstrap']),
             'link_preview' => 'https://portofolio.vercel.app',
@@ -105,6 +107,7 @@ class DatabaseSeeder extends Seeder
         ]);
         Project::create([
             'title' => 'Sistem Informasi Perpustakaan',
+            'type'=>'mobile_application',
             'description' => 'Sistem untuk mengelola data buku, peminjaman, dan pengembalian di perpustakaan sekolah.',
             'tech_stack' => json_encode(['Laravel', 'React', 'PostgreSQL']),
             'link_preview' => null,

@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->enum('type', ['mobile_application', 'website', 'ui_ux_design', 'desktop_application','iot_project','game'])->default('website');
             $table->text('description');
             $table->json('tech_stack')->nullable(); // ["Laravel", "React"]
             $table->string('link_preview')->nullable(); // Netlify/Vercel

@@ -92,9 +92,11 @@
                                         @foreach ($galleries as $key => $item)
                                             <tr>
                                                 <td>{{ $key + 1 }}</td>
-                                                <td><img src="{{ asset('images/galleries/' . $item->image) }}"
+                                                <td>
+                                                    <img src="{{ asset('images/galleries/' . $item->image) }}"
                                                         alt="Gallery Image"
-                                                        style="width: 70px; height: 70px; object-fit: cover;"></td>
+                                                        style="width: 70px; height: 70px; object-fit: cover;">
+                                                </td>
                                                 <td>{{ $item->title }}</td>
                                                 <td>
                                                     @php

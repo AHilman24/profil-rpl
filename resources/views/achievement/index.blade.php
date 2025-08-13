@@ -79,7 +79,7 @@
                                                     </div>
                                                     <div class="col-md-12 col-sm-12 mb-2">
                                                         <h6>Level</h6>
-                                                        <select id="addLevel" name="level" class="form-select">
+                                                        <select id="addLevel" name="level" class="form-select form-control">
                                                             <option value="">Select level</option>
                                                             <option value="kabupaten">Kabupaten</option>
                                                             <option value="provinsi">Provinsi</option>

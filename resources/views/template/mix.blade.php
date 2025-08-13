@@ -6,7 +6,6 @@
     <title>Admin - Portofolio RPL & PPLG</title>
     <meta content="width=device-width, initial-scale=1.0, shrink-to-fit=no" name="viewport" />
     <link rel="icon" href="assets/img/kaiadmin/favicon.ico" type="image/x-icon" />
-
     <!-- Fonts and icons -->
     <script src="assets/js/plugin/webfont/webfont.min.js"></script>
     <script>
@@ -41,13 +40,16 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     {{-- icon achievement --}}
-    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/3.0.0/uicons-regular-straight/css/uicons-regular-straight.css'>
+    <link rel='stylesheet'
+        href='https://cdn-uicons.flaticon.com/3.0.0/uicons-regular-straight/css/uicons-regular-straight.css'>
 
     {{-- icon project --}}
-    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/3.0.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+    <link rel='stylesheet'
+        href='https://cdn-uicons.flaticon.com/3.0.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
 
     {{-- icon gallery --}}
-    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/3.0.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+    <link rel='stylesheet'
+        href='https://cdn-uicons.flaticon.com/3.0.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
 </head>
 
 <body>
@@ -61,7 +63,7 @@
         <footer class="footer">
             <div class="container-fluid d-flex justify-content-between">
                 <div class="copyright">
-                    2025, made with   <i class="fa fa-heart heart text-danger"></i> by
+                    2025, made with <i class="fa fa-heart heart text-danger"></i> by
                     <a href="http://www.themekita.com">RPL SMK YPC Tasikmalaya</a>
                 </div>
             </div>
@@ -292,6 +294,24 @@
             }
         }
     </script>
+    <script>
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('add-stack')) {
+                e.preventDefault();
+                let wrapper = document.getElementById('tech-stack-wrapper');
+                let newInput = document.createElement('div');
+                newInput.classList.add('input-group', 'mb-2');
+                newInput.innerHTML = `
+                <input type="text" name="tech_stack[]" class="form-control" placeholder="Contoh: React" required>
+                <button type="button" class="btn btn-danger remove-stack">-</button>
+            `;
+                wrapper.appendChild(newInput);
+            }
+            if (e.target.classList.contains('remove-stack')) {
+                e.preventDefault();
+                e.target.closest('.input-group').remove();
+            }
+        });
+    </script>
 </body>
-
 </html>
